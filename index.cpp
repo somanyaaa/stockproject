@@ -27,7 +27,8 @@ string readLine(const string& prompt) {
 int readInt(const string& prompt, int minimum) {
     while (true) {
         stringstream ss(readLine(prompt));
-        int value; char extra;
+        int value; 
+        char extra;
         if ((ss >> value) && !(ss >> extra) && value >= minimum)
             return value;
         cout << "Enter a whole number >= " << minimum << ".\n";
@@ -37,10 +38,17 @@ int readInt(const string& prompt, int minimum) {
 double readPrice() {
     while (true) {
         stringstream ss(readLine("Unit price (INR): "));
-        double value; 
+        double value;
         char extra;
-        if ((ss >> value) && !(ss >> extra) && isfinite(value && value >= 0 && value <= 1000000000.0) 
+
+        if ((ss >> value) &&
+            !(ss >> extra) &&
+            isfinite(value) &&
+            value >= 0 &&
+            value <= 1000000000.0) {
             return value;
+        }
+
         cout << "Enter a valid price from 0 to 1000000000.\n";
     }
 }
